@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>LastKing Annotation Academy · Learn · Annotate · Practice · Get Certified</title>
+  <!-- Google Fonts & Font Awesome for clean icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --primary-light: #3b82f6;
+      --primary-dark: #1e40af;
+      --accent: #8b5cf6;
+      --accent-glow: #a78bfa;
+      --bg-dark: #0b1120;
+      --bg-card: #111827;
+      --bg-light: #f9fafb;
+      --text-light: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border-subtle: #1e293b;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --radius-card: 1.5rem;
+      --radius-sm: 0.75rem;
+      --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+      --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
+      --transition: all 0.2s ease;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Responsive container */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* ---- Typography & links ---- */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+    }
+
+    /* ----- Header / Navbar ----- */
+    .navbar {
+      background: rgba(11, 17, 32, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 0.9rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.35rem;
+    }
+
+    .logo-icon {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      width: 2.3rem;
+      height: 2.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+    }
+
+    .logo span {
+      background: linear-gradient(to right, #ffffff, #c7d2fe);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      transition: var(--transition);
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .btn-outline {
+      border: 1px solid var(--primary);
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 2rem;
+      font-weight: 500;
+      transition: var(--transition);
+      background: transparent;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border: none;
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      transition: var(--transition);
+      cursor: pointer;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+    }
+
+    .btn-large {
+      padding: 0.9rem 2rem;
+      font-size: 1rem;
+      border-radius: 3rem;
+    }
+
+    /* ----- Hero Section ----- */
+    .hero {
+      padding: 4rem 0 3rem;
+      background: radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.15), transparent 50%);
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .badge {
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      padding: 0.4rem 1.2rem;
+      border-radius: 3rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--primary-light);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      letter-spacing: 0.3px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 7vw, 4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      max-width: 950px;
+      background: linear-gradient(to right, #ffffff, #bfdbfe, #c4b5fd);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-top: 0.5rem;
+    }
+
+    .tagline {
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      color: var(--text-muted);
+      font-weight: 400;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 1.2rem;
+      margin: 0.5rem 0 0.8rem;
+    }
+
+    .tagline span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin: 1rem 0 0.5rem;
+    }
+
+    .stats-mini {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem 2.5rem;
+      margin-top: 2rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .stats-mini strong {
+      color: white;
+      font-size: 1.2rem;
+      display: block;
+      font-weight: 700;
+    }
+
+    /* ----- Section headings ----- */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(to right, #fff, #a5b4fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      max-width: 700px;
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ----- Role Cards (User Types) ----- */
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin: 2rem 0 1rem;
+    }
+
+    .role-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-card);
+      padding: 2rem 1.6rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .role-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(59, 130, 246, 0.3);
+    }
+
+    .role-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+
+    .role-icon {
+      font-size: 2rem;
+      background: rgba(59, 130, 246, 0.15);
+      width: 3.5rem;
+      height: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-light);
+    }
+
+    .role-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .role-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .role-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+
+    .role-features i {
+      color: var(--success);
+      margin-right: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    /* ----- Domain/Annotation types chips ----- */
+    .chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1rem;
+      margin: 2.5rem 0 1.5rem;
+      justify-content: center;
+    }
+
+    .chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      padding: 0.6rem 1.2rem;
+      border-radius: 2.5rem;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .chip i {
+      color: var(--accent-glow);
+    }
+
+    .chip:hover {
+      background: rgba(59, 130, 246, 0.1);
+      border-color: var(--primary);
+    }
+
+    /* ----- Platform preview (mockup) ----- */
+    .preview-section {
+      margin: 5rem 0 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      background: linear-gradient(145deg, #0f172a, #0b1120);
+      border-radius: 2.5rem;
+      padding: 2rem 1.8rem;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .preview-text {
+      flex: 1 1 280px;
+    }
+
+    .preview-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .preview-text p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .preview-visual {
+      flex: 1 1 320px;
+      background: #0a0f1c;
+      border-radius: 1.5rem;
+      padding: 1.2rem;
+      border: 1px solid #1e2a47;
+      box-shadow: 0 25px 30px -15px #00000070;
+    }
+
+    .mock-bar {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .mock-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #334155;
+    }
+
+    .mock-dot:first-child { background: #ef4444; }
+    .mock-dot:nth-child(2) { background: #f59e0b; }
+    .mock-dot:nth-child(3) { background: #10b981; }
+
+    .mock-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .mock-line {
+      height: 12px;
+      background: #1e293b;
+      border-radius: 20px;
+      width: 100%;
+    }
+
+    .mock-line.short { width: 60%; }
+    .mock-line.medium { width: 80%; }
+
+    .mock-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+    }
+
+    .mock-box {
+      background: #1e293b;
+      border-radius: 8px;
+      height: 50px;
+      border: 1px dashed #3b4b6b;
+    }
+
+    .mock-badge {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      border-radius: 30px;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      width: fit-content;
+    }
+
+    /* ----- Features / Assessment cards ----- */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+      margin: 3rem 0;
+    }
+
+    .feature-item {
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1.5rem;
+      padding: 1.8rem 1.5rem;
+      transition: var(--transition);
+    }
+
+    .feature-item:hover {
+      background: #111c2e;
+      border-color: #2d3b52;
+    }
+
+    .feature-item i {
+      font-size: 1.8rem;
+      color: var(--accent-glow);
+      margin-bottom: 1.2rem;
+    }
+
+    .feature-item h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .feature-item p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* ----- CTA / Certification banner ----- */
+    .cta-banner {
+      background: linear-gradient(135deg, #1e3a8a, #4c1d95);
+      border-radius: 2rem;
+      padding: 2.8rem 2rem;
+      margin: 4rem 0 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: 0 25px 40px -15px #00000080;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+    }
+
+    .cta-banner p {
+      color: #dbeafe;
+      max-width: 650px;
+      font-size: 1.05rem;
+    }
+
+    /* ----- Footer ----- */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 2.5rem 0;
+      margin-top: 3rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    /* ----- Responsive tweaks ----- */
+    @media (max-width: 768px) {
+      .navbar .nav-links {
+        display: none; /* simplify for mobile — a menu icon could be added, but we'll keep clean */
+      }
+
+      .nav-container {
+        justify-content: space-between;
+      }
+
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: var(--bg-card);
+        padding: 1rem;
+        border-radius: 1rem;
+        margin-top: 0.5rem;
+        order: 3;
+      }
+
+      .hero {
+        padding: 2.5rem 0;
+      }
+
+      .preview-section {
+        padding: 1.5rem;
+      }
+
+      .cta-banner {
+        padding: 2rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions .btn-large {
+        width: 100%;
+        text-align: center;
+      }
+
+      .stats-mini {
+        gap: 1rem;
+      }
+
+      .role-card {
+        padding: 1.5rem;
+      }
+    }
+
+    /* mobile menu toggle — not implemented as we hide links, but we can add a simple button for demonstration */
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: white;
+      font-size: 1.2rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.8rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* Utility */
+    .text-gradient {
+      background: linear-gradient(to right, #60a5fa, #c084fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <!-- ========== HEADER / NAVBAR ========== -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="logo">
+        <div class="logo-icon"><i class="fas fa-crown"></i></div>
+        <span>LastKing<span style="color: #a78bfa;">.</span></span>
+      </div>
+
+      <!-- Mobile menu button (visual only, doesn't need JS for this demo) -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#">Courses</a>
+        <a href="#">Annotation Labs</a>
+        <a href="#">Assessments</a>
+        <a href="#">Certification</a>
+        <a href="#">For Teams</a>
+      </nav>
+
+      <div style="display: flex; gap: 0.8rem; align-items: center;">
+        <button class="btn-outline">Log in</button>
+        <button class="btn-primary">Get started</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="badge">
+          <i class="fas fa-robot"></i> AI Data Annotation Academy
+        </div>
+        <h1>Master professional data annotation for AI</h1>
+        <div class="tagline">
+          <span><i class="fas fa-circle-check" style="color: #3b82f6;"></i> Learn</span>
+          <span><i class="fas fa-circle-check" style="color: #8b5cf6;"></i> Annotate</span>
+          <span><i class="fas fa-circle-check" style="color: #10b981;"></i> Practice</span>
+          <span><i class="fas fa-circle-check" style="color: #f59e0b;"></i> Get Certified</span>
+        </div>
+        <p style="color: var(--text-muted); max-width: 700px; font-size: 1.1rem;">
+          From computer vision to NLP, audio and video — train on real-world datasets, 
+          master annotation tools, and earn industry‑recognized certificates.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary btn-large"><i class="fas fa-rocket" style="margin-right: 8px;"></i>Start learning free</button>
+          <button class="btn-outline btn-large"><i class="fas fa-chalkboard-user" style="margin-right: 8px;"></i>Explore labs</button>
+        </div>
+        <div class="stats-mini">
+          <div><strong>12k+</strong> active learners</div>
+          <div><strong>50+</strong> annotation labs</div>
+          <div><strong>96%</strong> certification rate</div>
+          <div><strong>4.9★</strong> average rating</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== DOMAIN CHIPS ========== -->
+    <div class="container">
+      <div class="chips-row">
+        <div class="chip"><i class="fas fa-image"></i> Computer Vision</div>
+        <div class="chip"><i class="fas fa-language"></i> NLP & Text</div>
+        <div class="chip"><i class="fas fa-headphones"></i> Audio</div>
+        <div class="chip"><i class="fas fa-video"></i> Video</div>
+        <div class="chip"><i class="fas fa-robot"></i> Robotics</div>
+        <div class="chip"><i class="fas fa-car"></i> Autonomous Systems</div>
+        <div class="chip"><i class="fas fa-cube"></i> 3D / LiDAR</div>
+      </div>
+    </div>
+
+    <!-- ========== USER TYPES / ROLES ========== -->
+    <section style="margin: 4rem 0 2rem;">
+      <div class="container">
+        <h2 class="section-title">Built for every role</h2>
+        <p class="section-sub">Whether you're managing a team, training annotators, or starting your journey — LastKing adapts to you.</p>
+
+        <div class="roles-grid">
+          <!-- Admin / Trainer -->
+          <div class="role-card">
+            <div class="role-icon"><i class="fas fa-user-tie"></i></div>
+            <h3>Admin / Trainer</h3>
+            <p>Full control over courses, labs, assessments and student management.</p>
+            <ul class="role-features">
+              <li><i class="fas fa-check-circle"></i> Create & manage courses</li>
+              <li><i class="fas fa-check-circle"></i> Design annotation tasks</li>
+              <li><i class="fas fa-check-circle"></i> Build quizzes & exams</li>
+              <li><i class="fas fa-check-circle"></i> Track student progress</li>
+              <li><i class="fas fa-check-circle"></i> Issue certificates</li>
+            </ul>
+          </div>
+          <!-- Student / Annotator -->
+          <div class="role-card">
+            <div class="role-icon"><i class="fas fa-user-graduate"></i></div>
+            <h3>Student / Annotator</h3>
+            <p>Learn at your own pace, practice on real datasets and earn certificates.</p>
+            <ul class="role-features">
+              <li><i class="fas fa-check-circle"></i> Interactive courses</li>
+              <li><i class="fas fa-check-circle"></i> Real-world projects</li>
+              <li><i class="fas fa-check-circle"></i> Skill assessments</li>
+              <li><i class="fas fa-check-circle"></i> Verified certificates</li>
+              <li><i class="fas fa-check-circle"></i> Portfolio building</li>
+            </ul>
+          </div>
+          <!-- Reviewer / QA (additional) -->
+          <div class="role-card">
+            <div class="role-icon"><i class="fas fa-clipboard-check"></i></div>
+            <h3>Reviewer / QA</h3>
+            <p>Validate annotations, provide feedback and ensure highest quality.</p>
+            <ul class="role-features">
+              <li><i class="fas fa-check-circle"></i> Review submissions</li>
+              <li><i class="fas fa-check-circle"></i> Score & comment</li>
+              <li><i class="fas fa-check-circle"></i> Quality analytics</li>
+              <li><i class="fas fa-check-circle"></i> Team collaboration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PREVIEW / PLATFORM MOCKUP ========== -->
+    <div class="container">
+      <div class="preview-section">
+        <div class="preview-text">
+          <h3>Professional annotation workspace</h3>
+          <p>Train on the same tools used by AI teams: bounding boxes, polygons, keypoints, text span labeling, audio segmentation and more.</p>
+          <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+            <span class="chip" style="background: #1e293b;"><i class="fas fa-draw-polygon"></i> Polygons</span>
+            <span class="chip" style="background: #1e293b;"><i class="fas fa-vector-square"></i> Bounding boxes</span>
+            <span class="chip" style="background: #1e293b;"><i class="fas fa-font"></i> Text NER</span>
+          </div>
+        </div>
+        <div class="preview-visual">
+          <div class="mock-bar">
+            <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+          </div>
+          <div class="mock-content">
+            <div class="mock-line medium"></div>
+            <div class="mock-line short"></div>
+            <div class="mock-grid">
+              <div class="mock-box"></div>
+              <div class="mock-box"></div>
+              <div class="mock-box"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <div class="mock-line short" style="width: 40%;"></div>
+              <div class="mock-badge">LIVE TASK</div>
+            </div>
+            <div class="mock-line" style="width: 90%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== FEATURES / ASSESSMENT ========== -->
+    <section style="margin: 4rem 0;">
+      <div class="container">
+        <h2 class="section-title">Assessment & certification</h2>
+        <p class="section-sub">Validate your skills with practical exams, get scored, and earn shareable certificates.</p>
+
+        <div class="feature-grid">
+          <div class="feature-item">
+            <i class="fas fa-microscope"></i>
+            <h4>Hands-on labs</h4>
+            <p>Annotate real image, text, audio and video datasets directly in your browser.</p>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-file-signature"></i>
+            <h4>Adaptive quizzes</h4>
+            <p>Smart questions that adapt to your level and give instant feedback.</p>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-chart-line"></i>
+            <h4>Progress analytics</h4>
+            <p>Track accuracy, speed and skill growth over time with detailed reports.</p>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-certificate"></i>
+            <h4>Verified certificates</h4>
+            <p>Earn blockchain-ready certificates that you can share on LinkedIn.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA / CERTIFICATION BANNER ========== -->
+    <div class="container">
+      <div class="cta-banner">
+        <i class="fas fa-medal" style="font-size: 3rem; color: #fbbf24;"></i>
+        <h2>Get certified as a Professional Annotator</h2>
+        <p>Join thousands of graduates who now work on AI projects for top companies. Start your free assessment today.</p>
+        <button class="btn-primary btn-large" style="background: white; color: #1e3a8a; box-shadow: 0 10px 25px -5px #00000050;">
+          <i class="fas fa-graduation-cap" style="margin-right: 10px;"></i>Start certification path
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="container footer-content">
+      <div class="logo" style="font-size: 1.2rem;">
+        <div class="logo-icon" style="width: 2rem; height: 2rem; font-size: 1rem;"><i class="fas fa-crown"></i></div>
+        <span>LastKing Annotation Academy</span>
+      </div>
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Courses</a>
+        <a href="#">Labs</a>
+        <a href="#">Certification</a>
+        <a href="#">Contact</a>
+      </div>
+      <div style="font-size: 0.85rem;">© 2025 LastKing · All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Small script for mobile menu toggle (visual demo) -->
+  <script>
+    (function() {
+      const toggleBtn = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      if (toggleBtn && navLinks) {
+        toggleBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          navLinks.classList.toggle('active');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
